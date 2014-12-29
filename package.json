@@ -1,0 +1,27 @@
+{
+  "name": "NodeJS.React.Flux",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "watchify -t reactify -g envify -d -o public/js/bundle.js jsx/app.js | compass watch",
+    "build": "NODE_ENV=production browserify -t reactify -g envify -g uglifyify -o public/js/bundle.js jsx/app.js | bundle exec compass compile -e production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.6",
+    "jade": "^1.8.2",
+    "flux": "^2.0.1",
+    "bundler": "^0.8.0",
+    "react": "^0.12.2",
+    "envify": "^3.2.0",
+    "uglifyify": "^2.6.0",
+    "browserify": "^8.0.2",
+    "watchify": "^2.2.1",
+    "reactify": "^0.17.1",
+    "object-assign": "^2.0.0",
+    "keymirror": "^0.1.1"
+  }
+}

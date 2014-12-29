@@ -1,0 +1,6 @@
+/.sass-cache/*
+*.DS_Store
+*.log
+/node_modules
+/public/js/*
+/public/css/*
