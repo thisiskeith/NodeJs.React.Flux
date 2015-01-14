@@ -1,4 +1,4 @@
-e strict';
+'use strict';
 
 var AppConstants = require('../constants/AppConstants');
 var assign = require('object-assign');
