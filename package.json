@@ -1,27 +1,35 @@
 {
   "name": "NodeJS.React.Flux",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "watchify -t reactify -g envify -d -o public/js/bundle.js jsx/app.js | compass watch",
-    "build": "NODE_ENV=production browserify -t reactify -g envify -g uglifyify -o public/js/bundle.js jsx/app.js | bundle exec compass compile -e production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "NODE_ENV=production browserify -t [ babelify --plugins object-assign ] -t reactify -g envify -o public/js/bundle.js jsx/app.js && npm run build-css",
+    "build-css": "node-sass scss/app.scss public/css/app.css --output-style compressed",
+    "start": "babel-node server.js --harmony",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run watch-css | npm run watch-js",
+    "watch-css": "node-sass scss/app.scss public/css/app.css --watch",
+    "watch-js": "watchify --poll -v -t [ babelify --plugins object-assign ] -t reactify -g envify -d -o public/js/bundle.js jsx/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.10.6",
-    "jade": "^1.8.2",
-    "flux": "^2.0.1",
-    "bundler": "^0.8.0",
-    "react": "^0.12.2",
-    "envify": "^3.2.0",
-    "uglifyify": "^2.6.0",
+    "babel-core": "^5.8.24",
+    "babel-plugin-object-assign": "^1.2.1",
+    "babelify": "^6.3.0",
     "browserify": "^8.0.2",
-    "watchify": "^2.2.1",
-    "reactify": "^0.17.1",
+    "bundler": "^0.8.0",
+    "envify": "^3.2.0",
+    "express": "^4.10.6",
+    "flux": "^2.0.1",
+    "jade": "^1.8.2",
+    "keymirror": "^0.1.1",
+    "node-sass": "^3.3.2",
     "object-assign": "^2.0.0",
-    "keymirror": "^0.1.1"
+    "react": "^0.12.2",
+    "reactify": "^0.17.1",
+    "uglifyify": "^2.6.0",
+    "watchify": "^2.2.1"
   }
 }
